@@ -1,0 +1,90 @@
+server {
+        #sub_filter 'tcpi_options' $tcpinfo_options;
+	sub_filter 'http_user_agent' $http_user_agent;
+        sub_filter 'ssl_test' $ssl_rtt;
+        sub_filter 'tcp_test' $tcpinfo_rtt;
+        sub_filter 'address_ip' $remote_addr;
+        sub_filter 'tcpi_state_test' $tcpinfo_state;
+        sub_filter 'tcpi_ca_state_test' $tcpinfo_ca_state;
+        sub_filter 'tcpi_retransmits_test' $tcpinfo_retransmits;
+        sub_filter 'tcpi_probes_test' $tcpinfo_probes;
+        sub_filter 'tcpi_backoff_test' $tcpinfo_backoff;
+        sub_filter 'tcpi_options_test' $tcpinfo_options;
+        sub_filter 'tcpi_snd_wscale_test' $tcpinfo_snd_wscale;
+        sub_filter 'tcpi_rcv_wscale_test' $tcpinfo_rcv_wscale;
+        sub_filter 'tcpi_delivery_rate_app_limited_test' $tcpinfo_delivery_rate_app_limited;
+        sub_filter 'tcpi_fastopen_client_fail_test' $tcpinfo_fastopen_client_fail;
+        sub_filter 'tcpi_rto_test' $tcpinfo_rto;
+        sub_filter 'tcpi_ato_test' $tcpinfo_ato;
+        sub_filter 'tcpi_snd_mss_test' $tcpinfo_snd_mss;
+        sub_filter 'tcpi_rcv_mss_test' $tcpinfo_rcv_mss;
+        sub_filter 'tcpi_unacked_test' $tcpinfo_unacked;
+        sub_filter 'tcpi_sacked_test' $tcpinfo_sacked;
+        sub_filter 'tcpi_lost_test' $tcpinfo_lost;
+        sub_filter 'tcpi_retrans_test' $tcpinfo_retrans;
+        sub_filter 'tcpi_fackets_test' $tcpinfo_fackets;
+        sub_filter 'tcpi_last_data_sent_test' $tcpinfo_last_data_sent;
+        sub_filter 'tcpi_last_ack_sent_test' $tcpinfo_last_ack_sent;
+        sub_filter 'tcpi_last_data_recv_test' $tcpinfo_last_data_recv;
+        sub_filter 'tcpi_last_ack_recv_test' $tcpinfo_last_ack_recv;
+        sub_filter 'tcpi_pmtu_test' $tcpinfo_pmtu;
+        sub_filter 'tcpi_rcv_ssthresh_test' $tcpinfo_rcv_ssthresh;
+        sub_filter 'tcpi_rtt_test' $tcpinfo_rtt;
+        sub_filter 'tcpi_rttvar_test' $tcpinfo_rttvar;
+        sub_filter 'tcpi_snd_ssthresh_test' $tcpinfo_snd_ssthresh;
+        sub_filter 'tcpi_snd_cwnd_test' $tcpinfo_snd_cwnd;
+        sub_filter 'tcpi_advmss_test' $tcpinfo_advmss;
+        sub_filter 'tcpi_reordering_test' $tcpinfo_reordering;
+        sub_filter 'tcpi_rcv_rtt_test' $tcpinfo_rcv_rtt;
+        sub_filter 'tcpi_rcv_space_test' $tcpinfo_rcv_space;
+        sub_filter 'tcpi_total_retrans_test' $tcpinfo_total_retrans;
+        sub_filter 'tcpi_pacing_rate_test' $tcpinfo_pacing_rate;
+        sub_filter 'tcpi_max_pacing_rate_test' $tcpinfo_max_pacing_rate;
+        sub_filter 'tcpi_bytes_acked_test' $tcpinfo_bytes_acked;
+        sub_filter 'tcpi_bytes_received_test' $tcpinfo_bytes_received;
+        sub_filter 'tcpi_segs_out_test' $tcpinfo_segs_out;
+        sub_filter 'tcpi_segs_in_test' $tcpinfo_segs_in;
+        sub_filter 'tcpi_notsent_bytes_test' $tcpinfo_notsent_bytes;
+        sub_filter 'tcpi_min_rtt_test' $tcpinfo_min_rtt;
+        sub_filter 'tcpi_data_segs_in_test' $tcpinfo_data_segs_in;
+        sub_filter 'tcpi_data_segs_out_test' $tcpinfo_data_segs_out;
+        sub_filter 'tcpi_delivery_rate_test' $tcpinfo_delivery_rate;
+        sub_filter 'tcpi_busy_time_test' $tcpinfo_busy_time;
+        sub_filter 'tcpi_rwnd_limited_test' $tcpinfo_rwnd_limited;
+        sub_filter 'tcpi_sndbuf_limited_test' $tcpinfo_sndbuf_limited;
+        sub_filter 'tcpi_delivered_test' $tcpinfo_delivered;
+        sub_filter 'tcpi_delivered_ce_test' $tcpinfo_delivered_ce;
+        sub_filter 'tcpi_bytes_sent_test' $tcpinfo_bytes_sent;
+        sub_filter 'tcpi_bytes_retrans_test' $tcpinfo_bytes_retrans;
+        sub_filter 'tcpi_dsack_dups_test' $tcpinfo_dsack_dups;
+        sub_filter 'tcpi_reord_seen_test' $tcpinfo_reord_seen;
+        sub_filter 'tcpi_rcv_ooopack_test' $tcpinfo_rcv_ooopack;
+        sub_filter 'tcpi_snd_wnd_test' $tcpinfo_snd_wnd;
+        sub_filter_types "text/javascript" "application/javascript";
+
+        root /var/www/html;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+        server_name <DOMAIN>; # managed by Certbot
+
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+	listen 443 ssl;
+	ssl_certificate    <CERT_PATH>;
+	ssl_certificate_key    <CERT_KEY_PATH>;
+
+	server_name <DOMAIN>;
+
+}
+
+server {
+	listen 80;
+        server_name <DOMAIN>;
+        return 301 https://$host$request_uri;
+}
