@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Proxy Testers</title>
+  <nav> 
+    <a href="index.html"> Home Page</a>
+    <a href="page1.html">Page 1 </a>
+    <a href="page2.html"> Page 2</a>
+    <a href="page3.html"> Page 3</a>
+  </nav>
+
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+ <body onload = "welcomeFunction()" >
+    <h2> So far so good... </h2>
+    <div id="message"></div>
+    <script type="text/javascript">
+     let message = document.getElementById("message");
+     function welcomeFunction() {
+        alert( "Test #1" );
+        message.innerHTML = "You're doing great :)"
+     }
+    </script>
+
+    <img style="display: block; margin: 0 auto;" src="./images/tutu.jpeg" alt="Its a llama in a tutu">
+     
+    <div></div>
+    <div></div>
+    
+    <button style="display: block; margin: 0 auto;" onclick="goToPage2()">To Proxy Test 2</button>
+
+     <script>
+         function goToPage2() {
+             window.location.href = 'page2.html';
+         }
+     </script>
+
+      <script>
+        window.onload = function() {
+            window.location.href = "page2.html";
+        };
+      </script>
+ </body>
+
+</html>

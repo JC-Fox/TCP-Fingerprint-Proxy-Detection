@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Proxy Testers</title>
+  <nav> 
+    <a href="index.html"> Home Page</a>
+    <a href="page1.html">Page 1 </a>
+    <a href="page2.html"> Page 2</a>
+    <a href="page3.html"> Page 3</a>
+  </nav>
+
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body onload = "welcomeFunction()" >
+    <h2> Almost There... </h2>
+    <div id="message"></div>
+    <script type="text/javascript">
+     let message = document.getElementById("message");
+     function welcomeFunction() {
+        alert( "You're almost there" );
+        message.innerHTML = "So close!"
+     }
+    </script>
+
+    <img src="./images/c1.jpg" alt="Its cosmo time">  
+    <img src="./images/C2.jpeg" alt="cosmo pt2">
+    <img src="./images/C3.jpeg" alt="cosmo pt3">
+
+     <button style="display: block; margin: 0 auto;" onclick="goToPage2()">Lets get your results!</button>
+
+     <script>
+         function goToPage2() {
+             window.location.href = 'page3.html';
+         }
+     </script>
+
+    <img src="./images/C4.webp" alt="Its cosmo time">  
+    <img src="./images/c5.jpeg" alt="cosmo pt2">
+    <img src="./images/c6.jpeg" alt="cosmo pt3">
+    <img src="./images/c8.jpeg" alt="Its cosmo time">  
+    <img src="./images/c9.jpeg" alt="cosmo pt2">
+    <img src="./images/c10.jpeg" alt="cosmo pt3">
+    <img src="./images/c11.jpeg" alt="Its cosmo time">  
+    <img src="./images/c12.jpeg" alt="cosmo pt2">
+
+    <script>
+      // Use the onload event to redirect to the next page
+      window.onload = function() {
+          window.location.href = "page3.html";
+      };
+    </script>
+
+
+ </body>
+
+</html>

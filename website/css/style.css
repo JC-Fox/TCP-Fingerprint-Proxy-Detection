@@ -1,0 +1,217 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,100,700,900);
+
+h1, p, a{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato';
+}
+
+h1 {
+  font-size: 2.8em;
+  padding: 10px 0;
+  font-weight: 800;
+}
+
+p {
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+p2 {
+  font-size: 1.1em;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.8em;
+  padding: 20px 0;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Lato';
+  text-align: left;
+}
+
+h4 {
+  font-size: 1.0em;
+  padding: 5px 0;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Lato';
+  text-align: left;
+}
+
+.header {
+  width: 100%;
+  padding:60px 0;
+  text-align: center;
+  background: #d35252;
+  color: white;
+}
+
+.formatty {
+  text-align: left;
+}
+
+img {
+  display: block; 
+  margin: 0 auto;
+  width:500px;
+  height:500px;
+}
+
+
+.btn-bgstroke {
+  font-size: 20px;
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 300;
+  margin-top: 30px; 
+}
+
+.btn-bgstroke:hover {
+  background-color: white;
+  color:#b95353;
+}
+
+#wrapper
+{
+  padding:20px;
+  font-family: "Lato";
+}
+
+
+/* The root rule is the foundation for the whole page. These settings _cascade_
+to all elements unless they are overridden. */
+:root {
+	/* Change these variables according to your theme */
+	--primary: #1b0fc7;
+	--accent: #003bb0;
+	--delete: #5f7db4;
+	--primary-text: #ffffff;
+
+	/* Window background and default font */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* These rules with element selectors apply to all elements of the corresonding names. In a sense, they
+are automatically applied */
+
+body {
+    max-width: 70rem;			  /* Keeps the page from overflowing on wide monitors */
+    margin: 0.5em auto;		      /* 0.5em is top and bottom margin. 'auto' for left and right centers the body on the page */
+    border: 1px solid black;	/* Surround the content with a solid black border */
+    border-radius: 5px;			  /* Round the corners of the body section */
+    padding: 0.75rem;			  /* Padding goes between the borders and the internal content */
+    background-color: white;	/* Contrast the body background from the page background */
+}
+
+nav {
+    background-color: #2a2afb;
+    overflow: hidden;
+}
+
+nav a {
+    color: #ffffff;
+	font-weight: bolder;		/* Links in the nav bar are light blue instead of white */
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+nav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=number], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  button{
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+  #rcorners2 {
+    border: 2px solid #646464;
+    width: 200px;
+    height: 150px;
+  }
+
+  input[type=password], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  input[type=date], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }

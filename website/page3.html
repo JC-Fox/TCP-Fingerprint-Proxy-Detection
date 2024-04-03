@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Proxy Testers</title>
+    <nav>
+      <a href="index.html"> Home Page</a>
+      <a href="page1.html">Page 1 </a>
+      <a href="page2.html"> Page 2</a>
+      <a href="page3.html"> Page 3</a>
+    </nav>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* CSS for table layout */
+        .table-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border: 1px solid black;
+            margin-right: 20px;
+        }
+        table tr {
+            border: 1px solid black;
+        }
+        table td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body onload="myFunction()">
+<h2 style="text-align: center;">Here are your Results!</h2>
+
+<h4 style="text-align: center;">If the RTT Info box on the left is red, our tool has used timing analysis to detect your computer is using a proxy. <br>
+If the box is green, your computer is not using a proxy.<br>
+The &quot;user_agent&quot; variable on the right indicates your operating system as shown by your browser.<br><br>
+Thank you for visiting our Proxy Detection Website Tool! <br> Your cooperation will help make the internet a more secure place.</h4>
+
+<div class="table-container">
+    <div>
+        <h3>RTT Info</h3>
+        <table id="rttable">
+          <tr><td><h4>TLS RTT:</h4></td><td><span id="ssl_rtt"></span></td></tr>
+          <tr><td><h4>TCP Rtt:</h4></td><td><span id="tcpi_rtt"></span></td></tr>
+          <tr><td><h4>TLS RTT - TCP RTT:</h4></td><td><span id="percent"></span></td></tr>
+          <tr><td><h4>Percent of Threshold:</h4></td><td><span id="c_percent"></span></td></tr>
+          <tr><td><h4>TCP Rttvar:</h4></td><td><span id="tcpi_rttvar"></span></td></tr>
+          <tr><td><h4>TCP Min_rtt:</h4></td><td><span id="tcpi_min_rtt"></span></td></tr>
+        </table>
+    </div>
+
+    <div>
+        <h3>Primary TCP Info</h3>
+        <table id="tcptable">
+          <tr><td><h4>OS Identified from TCP Variables:</h4></td><td><span id="tcpOS"></span></td></tr>
+	  <tr><td><h4>IP Address:</h4></td><td><span id="ip_address"></span></td></tr>
+          <tr><td><h4>Options:</h4></td><td><span id="tcpi_options"></span></td></tr>
+          <tr><td><h4>Snd_wscale:</h4></td><td><span id="tcpi_snd_wscale"></span></td></tr>
+	  <tr><td><h4>Snd_wnd:</h4></td><td><span id="tcpi_snd_wnd"></span></td></tr>
+          <tr><td><h4>user_agent:</h4></td><td><span id="http_user"></span></td></tr>
+        </table>
+    </div>
+
+    <div>
+        <h3>Other Info</h3>
+        <table>
+	<tr><td><h4>Snd_mss:</h4></td><td><span id="tcpi_snd_mss"></span></td></tr>
+          <tr><td><h4>Pmtu:</h4></td><td><span id="tcpi_pmtu"></span></td></tr>
+          <tr><td><h4>Advmss:</h4></td><td><span id="tcpi_advmss"></span></td></tr>          
+          <tr><td><h4>State:</h4></td><td><span id="tcpi_state"></span></td></tr>
+          <tr><td><h4>Ca_state:</h4></td><td><span id="tcpi_ca_state"></span></td></tr>
+          <tr><td><h4>Retransmits:</h4></td><td><span id="tcpi_retransmits"></span></td></tr>
+          <tr><td><h4>Probes:</h4></td><td><span id="tcpi_probes"></span></td></tr>
+          <tr><td><h4>Backoff:</h4></td><td><span id="tcpi_backoff"></span></td></tr>
+          <tr><td><h4>Rcv_wscale:</h4></td><td><span id="tcpi_rcv_wscale"></span></td></tr>
+          <tr><td><h4>Delivery_rate_app_limited:</h4></td><td><span id="tcpi_delivery_rate_app_limited"></span></td></tr>
+          <tr><td><h4>Fastopen_client_fail:</h4></td><td><span id="tcpi_fastopen_client_fail"></span></td></tr>
+          <tr><td><h4>Rto:</h4></td><td><span id="tcpi_rto"></span></td></tr>
+          <tr><td><h4>Ato:</h4></td><td><span id="tcpi_ato"></span></td></tr>
+          <tr><td><h4>Rcv_mss:</h4></td><td><span id="tcpi_rcv_mss"></span></td></tr>
+          <tr><td><h4>Unacked:</h4></td><td><span id="tcpi_unacked"></span></td></tr>
+          <tr><td><h4>Sacked:</h4></td><td><span id="tcpi_sacked"></span></td></tr>
+          <tr><td><h4>Lost:</h4></td><td><span id="tcpi_lost"></span></td></tr>
+          <tr><td><h4>Retrans:</h4></td><td><span id="tcpi_retrans"></span></td></tr>
+          <tr><td><h4>Fackets:</h4></td><td><span id="tcpi_fackets"></span></td></tr>
+          <tr><td><h4>Last_data_sent:</h4></td><td><span id="tcpi_last_data_sent"></span></td></tr>
+          <tr><td><h4>Last_ack_sent:</h4></td><td><span id="tcpi_last_ack_sent"></span></td></tr>
+          <tr><td><h4>Last_data_recv:</h4></td><td><span id="tcpi_last_data_recv"></span></td></tr>
+          <tr><td><h4>Last_ack_recv:</h4></td><td><span id="tcpi_last_ack_recv"></span></td></tr>
+          <tr><td><h4>Rcv_ssthresh:</h4></td><td><span id="tcpi_rcv_ssthresh"></span></td></tr>
+          <tr><td><h4>Snd_ssthresh:</h4></td><td><span id="tcpi_snd_ssthresh"></span></td></tr>
+          <tr><td><h4>Snd_cwnd:</h4></td><td><span id="tcpi_snd_cwnd"></span></td></tr>
+          <tr><td><h4>Reordering:</h4></td><td><span id="tcpi_reordering"></span></td></tr>
+          <tr><td><h4>Rcv_rtt:</h4></td><td><span id="tcpi_rcv_rtt"></span></td></tr>
+          <tr><td><h4>Rcv_space:</h4></td><td><span id="tcpi_rcv_space"></span></td></tr>
+          <tr><td><h4>Total_retrans:</h4></td><td><span id="tcpi_total_retrans"></span></td></tr>
+          <tr><td><h4>Pacing_rate:</h4></td><td><span id="tcpi_pacing_rate"></span></td></tr>
+          <tr><td><h4>Max_pacing_rate:</h4></td><td><span id="tcpi_max_pacing_rate"></span></td></tr>
+          <tr><td><h4>Bytes_acked:</h4></td><td><span id="tcpi_bytes_acked"></span></td></tr>
+          <tr><td><h4>Bytes_received:</h4></td><td><span id="tcpi_bytes_received"></span></td></tr>
+          <tr><td><h4>Segs_out:</h4></td><td><span id="tcpi_segs_out"></span></td></tr>
+          <tr><td><h4>Segs_in:</h4></td><td><span id="tcpi_segs_in"></span></td></tr>
+          <tr><td><h4>Notsent_bytes:</h4></td><td><span id="tcpi_notsent_bytes"></span></td></tr>
+          <tr><td><h4>Data_segs_in:</h4></td><td><span id="tcpi_data_segs_in"></span></td></tr>
+          <tr><td><h4>Data_segs_out:</h4></td><td><span id="tcpi_data_segs_out"></span></td></tr>
+          <tr><td><h4>Delivery_rate:</h4></td><td><span id="tcpi_delivery_rate"></span></td></tr>
+          <tr><td><h4>Busy_time:</h4></td><td><span id="tcpi_busy_time"></span></td></tr>
+          <tr><td><h4>Rwnd_limited:</h4></td><td><span id="tcpi_rwnd_limited"></span></td></tr>
+          <tr><td><h4>Sndbuf_limited:</h4></td><td><span id="tcpi_sndbuf_limited"></span></td></tr>
+          <tr><td><h4>Delivered:</h4></td><td><span id="tcpi_delivered"></span></td></tr>
+          <tr><td><h4>Delivered_ce:</h4></td><td><span id="tcpi_delivered_ce"></span></td></tr>
+          <tr><td><h4>Bytes_sent:</h4></td><td><span id="tcpi_bytes_sent"></span></td></tr>
+          <tr><td><h4>Bytes_retrans:</h4></td><td><span id="tcpi_bytes_retrans"></span></td></tr>
+          <tr><td><h4>Dsack_dups:</h4></td><td><span id="tcpi_dsack_dups"></span></td></tr>
+          <tr><td><h4>Reord_seen:</h4></td><td><span id="tcpi_reord_seen"></span></td></tr>
+          <tr><td><h4>Rcv_ooopack:</h4></td><td><span id="tcpi_rcv_ooopack"></span></td></tr>
+        </table>
+    </div>
+</div>
+<a href="index.html" style="text-decoration:none"       >
+      <button style="display: block; margin: 0 auto;">Test Again!</button>
+</a>
+<script src="js/stats.js"/>
+
+     <script>
+         function goToPage2() {
+             window.location.href = 'index.html';
+         }
+     </script>
+</body>
+</html>

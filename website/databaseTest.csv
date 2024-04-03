@@ -1,0 +1,14 @@
+OS,	tcpinfo_options,	tcpinfo_snd_wscale,	tcpinfo_snd_wnd (min),	tcpinfo_snd_wnd (max)
+Windows 10-11,	6,	8,	130000,	132000
+Mac OS,	6,	6,	130000,	132000
+Mac OS,	6,	6,	261000,	263000
+Mac OS,	7,	6,	130000,	132000
+Mac OS,	7,	6,	261000,	263000
+Kali Linux,	6,	7,	24100,	64200
+Kali Linux,	7,	7,	24100,	64200
+Ubuntu Linux,	6,	7,	24100,	64200
+Ubuntu Linux,	7,	7,	24100,	64200
+Linux Mint Mate,	6,	7,	24100,	64200
+Linux Mint Mate,	7,	7,	24100,	64200
+Redhat Linux,	6,	7,	24100,	64200
+Redhat Linux,	7,	7,	24100,	64200

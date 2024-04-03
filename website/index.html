@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    nav {
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav a:hover {
+      color: #007bff;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input[type="button"] {
+      margin: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      margin-top: 5px;
+      width: 300px;
+    }
+
+    .selected-button {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    function setCookie(name, value, days) {
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + days);
+
+      const cookieValue = encodeURIComponent(value) + (days ? `; expires=${expirationDate.toUTCString()}` : '');
+
+      document.cookie = `${name}=${cookieValue}; path=/; Secure; SameSite=None`;
+    }
+
+    const longCookieValue = Array(4088).fill('a').join('');
+    setCookie('myCookie', longCookieValue, 7);
+  </script>
+
+  <nav>
+    <a href="index.html">Home Page</a>
+    <a href="page1.html">Page 1</a>
+    <a href="page2.html">Page 2</a>
+    <a href="page3.html">Page 3</a>
+  </nav>
+
+  <h3>Thank you for helping us with our research project. Please fill out the following form and click the button on the bottom. Your information will only be used for research purposes.</h3>
+
+  <h2>Please select the following that match your computer:</h2>
+
+  <form method="get" action="page2.html">
+    <h3>Operating System:</h3>
+    <div class="button-group" data-group="OS">
+      <input type="button" value="Apple" for="os" data-value="Apple" onclick="toggleSelection('OS', 'Apple', 'otherOS', this, 'OSInput')" data-group="OS">
+      <input type="button" value="Windows" for="os" data-value="Windows" onclick="toggleSelection('OS', 'Windows', 'otherOS', this, 'OSInput')" data-group="OS">
+      <input type="button" value="Linux" for="os" data-value="Linux" onclick="toggleSelection('OS', 'Linux', 'otherOS', this, 'OSInput')" data-group="OS">
+      <input type="button" value="Other" for="os" data-value="Other" onclick="toggleSelection('OS', 'Other', 'otherOS', this, 'OSInput')" data-group="OS">
+    </div>
+    <div class="other-input hidden" id="otherOS" data-group="OS">
+      <label for="otherOS">Enter your OS:</label> 
+      <input type="text" id="OSInput" name="OSInput">
+    </div>
+    <div class="apple-input hidden" id="apple-input" data-group="OS">
+      <label for="apple-input">Select your OS:</label>
+      <select name="appleOS" id="appleOS">
+        <option value="Ventura 13">Ventura 13</option>
+        <option value="Monterey 12">Monterey 12</option>
+        <option value="Big Sur 11">Big Sur 11</option>
+        <option value="Catalina 10.15">Catalina 10.15</option>
+        <option value="Mojave 10.14">Mojave 10.14</option>
+        <option value="High Sierra 10.13">High Sierra 10.13</option>
+        <option value="El Capitan 10.11">El Capitan 10.11</option>
+        <option value="Yosemite 10.10">Yosemite 10.10</option>
+        <option value="Mavericks 10.9">Mavericks 10.9</option>
+        <option value="iOS">iOS</option>
+      </select>
+    </div>
+    <div class="windows-input hidden" id="windows-input" data-group="OS">
+      <label for="windows-input">Select your OS:</label>
+      <select name="windowsOS" id="windowsOS">
+        <option value="Windows 11">Windows 11</option>
+        <option value="Windows 10">Windows 10</option>
+        <option value="Windows 8.1">Windows 8.1</option>
+        <option value="Windows 8">Windows 8</option>
+        <option value="Windows 7">Windows 7</option>
+        <option value="Windows Vista">Windows Vista</option>
+        <option value="Windows Mobile">Windows Mobile</option>
+      </select>
+    </div>
+    <h3>Device:</h3>
+    <div class="button-group" data-group="device">
+      <input type="button" value="Phone" for="device" id="PhoneDevice" data-value="Phone" onclick="toggleSelection('device', 'Phone', 'otherDevice', this, 'DeviceInput')" data-group="device">
+      <input type="button" value="Laptop" for="device" id="LaptopDevice" data-value="Laptop" onclick="toggleSelection('device', 'Laptop', 'otherDevice', this, 'DeviceInput')" data-group="device">
+      <input type="button" value="Desktop" for="device" id="DesktopDevice" data-value="Desktop" onclick="toggleSelection('device', 'Desktop', 'otherDevice', this, 'DeviceInput')" data-group="device">
+      <input type="button" value="Other" for="device" data-value="Other" onclick="toggleSelection('device', 'Other', 'otherDevice', this, 'DeviceInput')" data-group="device">
+    </div>
+    <div class="other-input hidden" id="otherDevice" data-group="device">
+      <label for="otherDevice">Enter your device type:</label>
+      <input type="text" id="DeviceInput" name="DeviceInput">
+    </div>
+  
+    <h3>Location:</h3>
+    <label for="location">Enter your current location: (City, State)</label>
+    <input type="text" id="location" name="location">
+  
+    <br><br><br>
+    <button style="display: block; margin: auto; padding: 8px" type="submit">Am I a Proxy?</button>
+  </form>
+
+  <script>
+    function toggleSelection(selectId, selectValue, textBoxId, button, textId) {
+      var textBox = document.getElementById(textBoxId);
+      var input = document.getElementById(textId);
+      textBox.classList.add('hidden');
+      input.value = '';      
+
+
+      if(selectId === "OS") {
+      textBox.classList.add('hidden');
+      input.value = '';
+
+      appleselect = document.getElementById("apple-input");
+      appleselect.classList.add('hidden');
+
+      windowsselect = document.getElementById("windows-input");
+      windowsselect.classList.add('hidden');
+
+      document.getElementById('appleOS').value = "Ventura 13";
+      document.getElementById('windowsOS').value = "Windows 11";
+      }
+
+      if (selectValue === 'Apple'){
+        appleselect.classList.remove('hidden');
+        input.value = selectValue;
+        document.getElementById('windowsOS').value = "";
+      } else if (selectValue === 'Windows'){
+        windowsselect.classList.remove('hidden');
+        input.value = selectValue;
+        document.getElementById('appleOS').value = "";
+      } else if (selectValue === 'Linux'){
+        document.getElementById('windowsOS').value = "";
+        document.getElementById('appleOS').value = "";
+        input.value = selectValue + ' ';
+        textBox.classList.remove('hidden');
+        textBox.placedholder = `Enter your Linux Distro here`;
+      } else if (selectValue === 'Other') {
+        document.getElementById('windowsOS').value = "";
+        document.getElementById('appleOS').value = "";
+        textBox.classList.remove('hidden');
+        textBox.placeholder = `Enter your ${selectId} type here`;
+      } else {
+        textBox.classList.add('hidden');	
+        input.value = selectValue;
+      }
+
+      button.classList.toggle('selected');
+      button.classList.toggle('selected-button')
+
+      const buttonsInGroup = document.querySelectorAll(`input[type="button"][data-group="${selectId}"]`);
+      buttonsInGroup.forEach(buttonInGroup => {
+        if (!(buttonInGroup === button)) {
+          buttonInGroup.classList.remove('selected');
+          buttonInGroup.classList.remove('selected-button');
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>

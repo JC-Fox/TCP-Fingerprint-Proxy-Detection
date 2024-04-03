@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TCP Options Form</title>
+</head>
+
+<body>
+
+    <h2>Results</h2>
+    <h3>Hash: <span id="hash"></span></h3>
+    <h3>Predicted OS: <span id="OS"></span></h3>
+    <h2>TCP Options Form</h2>
+
+        <label for="tcpi_options">TCP Options:</label>
+        <input type="text" id="tcpi_options" name="tcpi_options">
+        <br>
+
+        <label for="tcpi_snd_wscale">TCP Send Window Scale:</label>
+        <input type="number" id="tcpi_snd_wscale" name="tcpi_snd_wscale">
+        <br>
+
+        <label for="tcpi_snd_mss">TCP Send MSS:</label>
+        <input type="number" id="tcpi_snd_mss" name="tcpi_snd_mss">
+        <br>
+
+        <label for="tcpi_pmtu">TCP PMTU:</label>
+        <input type="number" id="tcpi_pmtu" name="tcpi_pmtu">
+        <br>
+
+        <label for="tcpi_advmss">TCP Advertised MSS:</label>
+        <input type="number" id="tcpi_advmss" name="tcpi_advmss">
+        <br>
+
+        <button onclick="submit()">Submit</button>
+    <script>
+        String.prototype.hashCode = function () {
+            var hash = 0,
+                i, chr;
+            if (this.length === 0) return hash;
+            for (i = 0; i < this.length; i++) {
+                chr = this.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
+        var library = {"358392546": "Android", "-273541932": "Kali", "-1294610286": "Unraid", 
+        "1961870720": "Windows", "-1886614903": "MacOS", "-1080463553": "Windows", "iPhone" : "1971704807", "-290959868": "Open-WRT Router"}
+        function submit() {
+            var params = '';
+            params += document.getElementById("tcpi_options").value + ',';
+            params += document.getElementById("tcpi_snd_wscale").value + ',';
+            params += document.getElementById("tcpi_snd_mss").value + ',';
+            params += document.getElementById("tcpi_pmtu").value + ',';
+            params += document.getElementById("tcpi_advmss").value;
+            var hash = params.hashCode();
+            document.getElementById("hash").innerText = params.hashCode(hash);
+            document.getElementById("OS").innerText = library[hash];
+        }
+
+    </script>
+</body>
+
+</html>
